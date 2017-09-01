@@ -1,0 +1,29 @@
+$primary: #006699;
+
+h2 {
+	color: $primary;
+}
+
+.App-header {
+  background-color: #222;
+  height: 40px;
+  padding: 20px;
+  color: white;
+}
+
+.gc-game {
+    padding: 25px 50px;
+    display: flex;
+}
+
+.gc-inventory, .gc-actions {
+    flex: 1 0 50%;
+}
+
+.gc-button {
+    background: #ffffff;
+    border: 1px solid #777777;
+    border-radius: 5px;
+    padding: 10px 30px;
+    cursor: pointer;
+}
