@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 import {grabGrub, buildGrubGrabber} from '../actions/index'
 // import Cookies from 'universal-cookie'
 
+import Stats from '../containers/stats.container'
+import Events from '../containers/events.container'
+import Actions from '../containers/actions.container'
 
 class Game extends Component {
 
@@ -61,16 +64,6 @@ class Game extends Component {
     // };
 
     render() {
-        const stats = Object.keys(this.props.stats).map((stat, index) => {
-           return (
-               <li key={stat}>{stat}: {this.props.stats[stat]}</li>
-           );
-        });
-        // const events = this.state.events.map((event, index) => {
-        //    return (
-        //        <li key={event.name}>{event.name}</li>
-        //    );
-        // });
 
         return (
             <div>
@@ -81,27 +74,10 @@ class Game extends Component {
                 </div>
                 <div className="gc-game">
                     <div className="gc-inventory">
-                        <div>
-                            <h4>Stats:</h4>
-                            <ul>{stats}</ul>
-                        </div>
-                        <div>
-                            <h4>Events:</h4>
-                            <ul>No Events</ul>
-                        </div>
+                        <Stats/>
+                        <Events/>
                     </div>
-                    <div className="gc-actions">
-                        <button className="gc-button" onClick={() => this.props.grabGrub()}>
-                            Grab Grub
-                        </button>
-                        {
-                            this.props.stats.grubs > 10 ?
-                                <button className="gc-button" onClick={() => this.props.buildGrubGrabber()}>
-                                    Build Grub Grabber
-                                </button>
-                            : null
-                        }
-                    </div>
+                    <Actions/>
                 </div>
             </div>
         );

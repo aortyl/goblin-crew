@@ -1,7 +1,5 @@
 import React from 'react';
-import UserList from '../containers/user-list';
-import UserDetails from '../containers/user-detail';
-import Game from '../containers/game'
+import Game from '../containers/game.container'
 require('../../scss/style.scss');
 
 const App = () => (
@@ -10,10 +8,6 @@ const App = () => (
             <h2>Goblin Crew</h2>
         </div>
         <Game />
-        <UserList />
-        <hr />
-        <h2>User Details</h2>
-        <UserDetails />
     </div>
 );
 

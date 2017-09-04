@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
-import UserReducer from './reducer-users';
-import ActiveUserReducer from './reducer-active-user';
-import StatsReducer from './reducer-stats'
+import StatsReducer from './reducer-stats';
+import BuildingReducer from './reducer-buildings';
+import EventReducer from './reducer-events';
 
 /*
  * We combine all reducers into a single object before updated data is dispatched (sent) to store
@@ -9,9 +9,9 @@ import StatsReducer from './reducer-stats'
  * */
 
 const allReducers = combineReducers({
-    users: UserReducer,
-    activeUser: ActiveUserReducer,
-    stats: StatsReducer
+    stats: StatsReducer,
+    buildings: BuildingReducer,
+    events: EventReducer
 });
 
 export default allReducers
