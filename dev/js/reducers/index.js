@@ -1,7 +1,8 @@
 import {combineReducers} from 'redux';
-import StatsReducer from './reducer-stats';
-import BuildingReducer from './reducer-buildings';
-import EventReducer from './reducer-events';
+import StatsReducer from './stats.reducer';
+import BuildingReducer from './buildings.reducer';
+import EventReducer from './events.reducer';
+import ActionReducer from './actions.reducer';
 
 /*
  * We combine all reducers into a single object before updated data is dispatched (sent) to store
@@ -11,7 +12,8 @@ import EventReducer from './reducer-events';
 const allReducers = combineReducers({
     stats: StatsReducer,
     buildings: BuildingReducer,
-    events: EventReducer
+    events: EventReducer,
+    actions: ActionReducer
 });
 
 export default allReducers

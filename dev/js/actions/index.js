@@ -1,8 +1,8 @@
-export const selectUser = (user) => {
-    console.log("You clicked on user: ", user.first);
+export const genericAction = (type, payload) => {
+    console.log(type, payload);
     return {
-        type: 'USER_SELECTED',
-        payload: user
+        type: type,
+        payload: payload
     }
 };
 
@@ -29,3 +29,5 @@ export const buildGrubGrabber = () => {
         }
     }
 };
+
+
