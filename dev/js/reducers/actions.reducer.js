@@ -15,7 +15,7 @@ function defaultState() {
         buildGrubGrabber: {
             name: 'Build Grub Grabber',
             type: 'BUILD_GRUB_GRABBER',
-            show: false,
+            show: true,
             requires: {
                 stats: {
                     grubs: 100

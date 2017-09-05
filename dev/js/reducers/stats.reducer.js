@@ -27,12 +27,8 @@ export default function (state = defaultState(), action) {
     switch (action.type) {
         case "GRAB_GRUB":
             return statModifier(state, action);
-        case "BUILD":
-            if(action.payload.cost) {
-                var modifier = {};
-                modifier[action.payload.cost.key] = state[action.payload.cost.key] - action.payload.cost.value;
-                return Object.assign({}, state, modifier);
-            }
+        case "BUILD_GRUB_GRABBER":
+            return statModifier(state, action);
     }
     return state;
 }

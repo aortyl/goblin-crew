@@ -6,28 +6,5 @@ export const genericAction = (type, payload) => {
     }
 };
 
-export const grabGrub = () => {
-    return {
-        type: 'GRAB',
-        payload: {
-            gain: {
-                key: 'grubs',
-                value: 1
-            }
-        }
-    }
-};
-
-export const buildGrubGrabber = () => {
-    return {
-        type: "BUILD",
-        payload: {
-            cost: {
-                key: 'grubs',
-                value: 100
-            }
-        }
-    }
-};
 
 

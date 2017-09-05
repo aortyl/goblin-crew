@@ -1,26 +1,48 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {grabGrub, buildGrubGrabber, genericAction} from '../actions/index'
+import {genericAction} from '../actions/index'
 
 class Actions extends Component {
 
     render() {
 
-        console.log('STATE', this.props)
+        const actionButtons = Object.keys(this.props.actions).map((key, index) => {
+            let action = this.props.actions[key];
+            let requiredMet = true;
+            let disabled = false;
+
+            if(action.requires) {
+                if(action.requires.stats) {
+                    for(let requiresKey in action.requires.stats) {
+                        requiredMet &= this.props.stats[requiresKey] >= action.requires.stats[requiresKey];
+                    }
+                }
+            }
+
+            if(action.payload.cost) {
+                if(action.payload.cost.stats) {
+                    for(let disabledKey in action.requires.stats) {
+                        disabled |= this.props.stats[disabledKey] < action.payload.cost.stats[disabledKey];
+                    }
+                }
+            }
+
+            if(action.show && requiredMet) {
+                return (
+                    <button key={this.props.actions[key].type}
+                            className="gc-button"
+                            disabled={disabled}
+                            onClick={() => this.props.genericAction(action.type, action.payload)}>
+                        {action.name}
+                    </button>
+                );
+            }
+        });
 
         return (
             <div className="gc-actions">
-                <button className="gc-button" onClick={() => this.props.genericAction(this.props.actions.grabGrub.type, this.props.actions.grabGrub.payload)}>
-                    {this.props.actions.grabGrub.name}
-                </button>
-                {
-                    this.props.stats.grubs > 10 ?
-                        <button className="gc-button" onClick={() => this.props.buildGrubGrabber()}>
-                            Build Grub Grabber
-                        </button>
-                    : null
-                }
+                {actionButtons}
             </div>
         );
     }
@@ -37,8 +59,6 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch){
     return bindActionCreators({
-        grabGrub: grabGrub,
-        buildGrubGrabber: buildGrubGrabber,
         genericAction: genericAction
     }, dispatch);
 }
