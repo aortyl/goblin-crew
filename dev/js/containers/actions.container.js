@@ -28,7 +28,7 @@ class Actions extends Component {
                 }
             }
 
-            if(action.show && requiredMet) {
+            if(action.show || requiredMet) {
                 return (
                     <button key={this.props.actions[key].type}
                             className="gc-button"
