@@ -4,7 +4,7 @@ function defaultState() {
     }
 }
 
-function statModifier(state, action) {
+const statModifier = (state, action) => {
     let modifier = {};
 
     if(action.payload.gain && action.payload.gain.stats) {
