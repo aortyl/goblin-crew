@@ -18,13 +18,18 @@ function defaultState() {
             show: true,
             requires: {
                 stats: {
-                    grubs: 100
+                    grubs: 10
                 }
             },
             payload: {
                 cost: {
                     stats: {
-                        grubs: 100
+                        grubs: 10
+                    }
+                },
+                gain: {
+                    buildings: {
+                        grubGrabber: 1
                     }
                 }
             }

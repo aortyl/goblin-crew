@@ -9,6 +9,9 @@ function statModifier(state, action) {
 
     if(action.payload.gain && action.payload.gain.stats) {
         for(let key in action.payload.gain.stats) {
+            if(!state[key])
+                state[key] = 0;
+
             modifier[key] = state[key] + action.payload.gain.stats[key];
         }
     }

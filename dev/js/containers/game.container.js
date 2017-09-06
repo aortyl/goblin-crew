@@ -7,6 +7,7 @@ import {grabGrub, buildGrubGrabber} from '../actions/index'
 import Stats from '../containers/stats.container'
 import Events from '../containers/events.container'
 import Actions from '../containers/actions.container'
+import Buildings from '../containers/buildings.container'
 
 class Game extends Component {
 
@@ -75,6 +76,7 @@ class Game extends Component {
                 <div className="gc-game">
                     <div className="gc-inventory">
                         <Stats/>
+                        <Buildings/>
                         <Events/>
                     </div>
                     <Actions/>
