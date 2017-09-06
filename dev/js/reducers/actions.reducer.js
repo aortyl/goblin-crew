@@ -1,11 +1,10 @@
 function defaultState() {
     return {
-        grabGrub: {
+        GRAB_GRUB: {
             name: 'Grab Grub',
             type: 'GRAB_GRUB',
             show: true,
             payload: {
-                actionKey: 'grabGrub',
                 gain: {
                     stats: {
                         grubs: 1
@@ -13,7 +12,7 @@ function defaultState() {
                 }
             }
         },
-        buildGrubGrabber: {
+        BUILD_GRUB_GRABBER: {
             name: 'Build Grub Grabber',
             type: 'BUILD_GRUB_GRABBER',
             show: false,
@@ -23,7 +22,6 @@ function defaultState() {
                 }
             },
             payload: {
-                actionKey: 'buildGrubGrabber',
                 cost: {
                     stats: {
                         grubs: 10
@@ -39,7 +37,7 @@ function defaultState() {
     }
 }
 
-let setStateTrue = (state, key) => {
+const setStateTrue = (state, key) => {
     let modifier = {};
     modifier[key] = Object.assign({}, state[key], {show: true});
     return Object.assign({}, state, modifier);
@@ -48,7 +46,7 @@ let setStateTrue = (state, key) => {
 export default function (state = defaultState(), action) {
     switch (action.type) {
         case "BUILD_GRUB_GRABBER":
-            return setStateTrue(state, action.payload.actionKey)
+            return setStateTrue(state, action.type)
     }
     return state;
 }
