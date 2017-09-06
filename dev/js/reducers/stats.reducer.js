@@ -24,13 +24,14 @@ const statModifier = (state, action) => {
     }
 
     return Object.assign({}, state, modifier);
-}
+};
 
 export default function (state = defaultState(), action) {
     switch (action.type) {
         case "GRAB_GRUB":
-            return statModifier(state, action);
         case "BUILD_GRUB_GRABBER":
+        case "GRAB_ROCK":
+        case "SHARPEN_ROCK":
             return statModifier(state, action);
     }
     return state;

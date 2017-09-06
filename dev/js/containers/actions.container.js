@@ -9,7 +9,7 @@ class Actions extends Component {
 
         const actionButtons = Object.keys(this.props.actions).map((key, index) => {
             let action = this.props.actions[key];
-            let requiredMet = true;
+            let requiredMet = !!action.requires;
             let disabled = false;
 
             if(action.requires) {
@@ -22,7 +22,7 @@ class Actions extends Component {
 
             if(action.payload.cost) {
                 if(action.payload.cost.stats) {
-                    for(let disabledKey in action.requires.stats) {
+                    for(let disabledKey in action.payload.cost.stats) {
                         disabled |= this.props.stats[disabledKey] < action.payload.cost.stats[disabledKey];
                     }
                 }
