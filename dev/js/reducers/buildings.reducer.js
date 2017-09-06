@@ -29,8 +29,6 @@ function buildingModifier(state, action) {
 
 export default function (state = defaultState(), action) {
     switch (action.type) {
-        case "GRAB_GRUB":
-            return buildingModifier(state, action);
         case "BUILD_GRUB_GRABBER":
             return buildingModifier(state, action);
     }
