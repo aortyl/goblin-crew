@@ -19,6 +19,9 @@ function defaultState() {
             requires: {
                 stats: {
                     grubs: 15
+                },
+                buildings: {
+                    grubGrabber: 1
                 }
             },
             payload: {

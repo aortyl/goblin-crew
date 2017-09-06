@@ -18,12 +18,22 @@ class Actions extends Component {
                         requiredMet &= this.props.stats[requiresKey] >= action.requires.stats[requiresKey];
                     }
                 }
+                if(action.requires.buildings) {
+                    for(let requiresKey in action.requires.buildings) {
+                        requiredMet &= this.props.buildings[requiresKey] >= action.requires.buildings[requiresKey];
+                    }
+                }
             }
 
             if(action.payload.cost) {
                 if(action.payload.cost.stats) {
                     for(let disabledKey in action.payload.cost.stats) {
                         disabled |= this.props.stats[disabledKey] < action.payload.cost.stats[disabledKey];
+                    }
+                }
+                if(action.payload.cost.buildings) {
+                    for(let disabledKey in action.payload.cost.buildings) {
+                        disabled |= this.props.buildings[disabledKey] < action.payload.cost.buildings[disabledKey];
                     }
                 }
             }
