@@ -20,7 +20,8 @@ class Actions extends Component {
                 }
                 if(action.requires.buildings) {
                     for(let requiresKey in action.requires.buildings) {
-                        requiredMet &= this.props.buildings[requiresKey] >= action.requires.buildings[requiresKey];
+                        let buildingType = this.props.buildings.buildingLibrary[requiresKey].type;
+                        requiredMet &= this.props.buildings[buildingType][requiresKey] >= action.requires.buildings[requiresKey];
                     }
                 }
             }
@@ -33,7 +34,8 @@ class Actions extends Component {
                 }
                 if(action.payload.cost.buildings) {
                     for(let disabledKey in action.payload.cost.buildings) {
-                        disabled |= this.props.buildings[disabledKey] < action.payload.cost.buildings[disabledKey];
+                        let buildingType = this.props.buildings.buildingLibrary[disabledKey].type;
+                        disabled |= this.props.buildings[buildingType][disabledKey] < action.payload.cost.buildings[disabledKey];
                     }
                 }
             }
