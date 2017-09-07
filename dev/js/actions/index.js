@@ -5,5 +5,10 @@ export const genericAction = (type, payload) => {
     }
 };
 
-
+export const generatorDigest = (payload) => {
+    return {
+        type: 'GENERATOR_DIGEST',
+        payload: payload
+    }
+};
 

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
+import {generatorDigest} from '../actions/index'
 
 class Buildings extends Component {
     constructor(props, context) {
@@ -9,6 +11,15 @@ class Buildings extends Component {
         this._generatorDigest = () => {
             //TODO - Cycle through generators and if they can handle the cost, then generate whatever they generate.
             //TODO - Question: Should there be a single GENERATOR_DIGEST action with a unique payload? or a unique action per building?
+
+            for(let buildingKey in this.props.buildings.generator){
+                let building = this.props.buildings.buildingLibrary[buildingKey];
+                let count = this.props.buildings.generator[buildingKey];
+
+                Array(count).fill(count).forEach(() => {
+                    this.props.generatorDigest(building);
+                });
+            }
         }
     }
 
@@ -42,4 +53,10 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Buildings);
+function matchDispatchToProps(dispatch){
+    return bindActionCreators({
+        generatorDigest: generatorDigest
+    }, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Buildings);

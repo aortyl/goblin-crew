@@ -36,6 +36,8 @@ export default function (state = defaultState(), action) {
         case "GRAB_ROCK":
         case "SHARPEN_ROCK":
             return statModifier(state, action);
+        case "GENERATOR_DIGEST":
+
     }
     return state;
 }
