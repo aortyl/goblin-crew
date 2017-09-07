@@ -17,6 +17,7 @@ function defaultState() {
                     {
                         name: "Raid Rival Crew",
                         id: 'AGR1',
+                        type: 'action',
                         duration: 30,
                         activeEffects: {
                             gain: {
@@ -41,6 +42,7 @@ function defaultState() {
                     {
                         name: "Raid Human Village",
                         id: 'AHR1',
+                        type: 'action',
                         duration: 30,
                         activeEffects: {
                             gain: {

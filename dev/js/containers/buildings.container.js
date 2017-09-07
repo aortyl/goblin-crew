@@ -5,16 +5,16 @@ import {connect} from 'react-redux';
 class Buildings extends Component {
 
     render() {
-        const buildings = Object.keys(this.props.buildings).map((building) => {
+        const generatorBuildings = Object.keys(this.props.buildings.generator).map((building) => {
            return (
-               <li key={building}>{building}: {this.props.buildings[building]}</li>
+               <li key={building}>{this.props.buildings.buildingLibrary[building].name}: {this.props.buildings.generator[building]}</li>
            );
         });
 
         return (
             <div>
                 <h4>buildings:</h4>
-                <ul>{buildings}</ul>
+                <ul>{generatorBuildings}</ul>
             </div>
         );
     }

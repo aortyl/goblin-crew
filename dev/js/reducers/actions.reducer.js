@@ -49,7 +49,7 @@ function defaultState() {
             payload: {
                 gain: {
                     stats: {
-                        sharpenedRocks: 1
+                        sharpRocks: 1
                     }
                 },
                 cost: {
