@@ -16,6 +16,7 @@ function defaultState() {
                 goblinRaids: [
                     {
                         name: "Raid Rival Crew",
+                        description: 'Those gobbos are weak! Take their junk!',
                         id: 'AGR1',
                         type: 'action',
                         duration: 30,
@@ -27,14 +28,50 @@ function defaultState() {
 
                             }
                         },
-                        postEffect: {
-                            gain: {
+                        popups: {
+                            '30': {
+                                message: "You've decided to raid a rival crew. Ready the stabby sticks!",
+                                options: [
+                                    {
+                                        text: "Sharpening 'em!",
+                                        response: "ok"
+                                    }
+                                ],
+                                effects: {
+                                    ok: {
+                                        gain: {
 
+                                        },
+                                        cost: {
+                                            stats: {
+                                                grubs: 10
+                                            }
+                                        }
+                                    }
+                                }
                             },
-                            cost: {
-
+                            '15': {
+                                message: "You're preparation is halfway done. Raiding in 15!",
+                                options: [
+                                    {
+                                        text: "Steel your resolve.",
+                                        response: "ok"
+                                    }
+                                ]
                             },
-                            events: []
+                            '0': {
+                                message: "Welp! It's time. You sure you're ready for this, chief?",
+                                options: [
+                                    {
+                                        text: "Start the stabbing!",
+                                        response: "attack"
+                                    },
+                                    {
+                                        text: "Nope! Turns out we yellow, not green.",
+                                        response: "chicken"
+                                    }
+                                ]
+                            }
                         }
                     }
                 ],
