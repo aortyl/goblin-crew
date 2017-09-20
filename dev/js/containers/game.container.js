@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {grabGrub, buildGrubGrabber} from '../actions/index'
+import {killAllGoblins} from '../actions/index'
 // import Cookies from 'universal-cookie'
 
 import Stats from '../containers/stats.container'
@@ -69,7 +69,7 @@ class Game extends Component {
         return (
             <div>
                 <div>
-                    <button className="gc-button" onClick={this.handleRestartClick}>
+                    <button className="gc-button" onClick={() => this.props.killAllGoblins()}>
                         Kill All Goblins
                     </button>
                 </div>
@@ -94,8 +94,7 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch){
     return bindActionCreators({
-        grabGrub: grabGrub,
-        buildGrubGrabber: buildGrubGrabber
+        killAllGoblins: killAllGoblins
     }, dispatch);
 }
 

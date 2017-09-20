@@ -50,6 +50,8 @@ export default function (state = defaultState(), action) {
             return Object.assign(statModifier(state, action), modifier);
         case "GENERATOR_DIGEST":
             return statModifier(state, action);
+        case "KILL_ALL_GOBLINS":
+            return defaultState();
 
     }
     return state;

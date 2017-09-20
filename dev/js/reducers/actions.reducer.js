@@ -97,6 +97,8 @@ export default function (state = defaultState(), action) {
         case "GRAB_ROCK":
         case "SHARPEN_ROCK":
             return setStateTrue(state, action.type)
+        case "KILL_ALL_GOBLINS":
+            return defaultState();
     }
     return state;
 }

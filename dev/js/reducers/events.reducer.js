@@ -105,8 +105,8 @@ function defaultState() {
 
 export default function (state = defaultState(), action) {
     switch (action.type) {
-        case "BLARP":
-            break;
+        case "KILL_ALL_GOBLINS":
+            return defaultState();
 
     }
     return state;

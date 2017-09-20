@@ -97,6 +97,8 @@ export default function (state = defaultState(), action) {
     switch (action.type) {
         case "BUILD_GRUB_GRABBER":
             return buildingModifier(state, action);
+        case "KILL_ALL_GOBLINS":
+            return defaultState();
     }
     return state;
 }

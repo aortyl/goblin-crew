@@ -12,3 +12,9 @@ export const generatorDigest = (payload) => {
     }
 };
 
+export const killAllGoblins = () => {
+    return {
+        type: 'KILL_ALL_GOBLINS',
+        payload: {}
+    }
+}
