@@ -37,6 +37,7 @@ export default function (state = defaultState(), action) {
         case "SHARPEN_ROCK":
             return statModifier(state, action);
         case "GENERATOR_DIGEST":
+            return statModifier(state, action);
 
     }
     return state;

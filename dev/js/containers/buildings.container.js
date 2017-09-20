@@ -17,7 +17,11 @@ class Buildings extends Component {
                 let count = this.props.buildings.generator[buildingKey];
 
                 Array(count).fill(count).forEach(() => {
-                    this.props.generatorDigest(building);
+                    if(!building.cost || !building.cost.stats || Object.keys(building.cost.stats).reduce((b, key) => {
+                        return b && building.cost.stats[key] <= this.props.stats[key];
+                    }, true)) {
+                        this.props.generatorDigest({gain: building.gain, cost: building.cost});
+                    }
                 });
             }
         }
@@ -49,7 +53,8 @@ class Buildings extends Component {
 
 function mapStateToProps(state) {
     return {
-        buildings: state.buildings
+        buildings: state.buildings,
+        stats: state.stats
     };
 }
 
