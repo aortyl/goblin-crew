@@ -13,11 +13,10 @@ function defaultState() {
                 boon: []
             },
             action: {
-                goblinRaids: [
-                    {
+                goblinRaids: {
+                    AGR1: {
                         name: "Raid Rival Crew",
                         description: 'Those gobbos are weak! Take their junk!',
-                        id: 'AGR1',
                         type: 'action',
                         duration: 30,
                         activeEffects: {
@@ -74,11 +73,10 @@ function defaultState() {
                             }
                         }
                     }
-                ],
-                humanRaids: [
-                    {
+                },
+                humanRaids: {
+                    AHR1: {
                         name: "Raid Human Village",
-                        id: 'AHR1',
                         type: 'action',
                         duration: 30,
                         activeEffects: {
@@ -99,7 +97,7 @@ function defaultState() {
                             events: []
                         }
                     }
-                ]
+                }
             }
         }
     }
