@@ -38,10 +38,16 @@ const statModifier = (state, action) => {
 export default function (state = defaultState(), action) {
     switch (action.type) {
         case "GRAB_GRUB":
-        case "BUILD_GRUB_GRABBER":
         case "GRAB_ROCK":
         case "SHARPEN_ROCK":
             return statModifier(state, action);
+        case "BUILD_GRUB_GRABBER":
+            //TODO - This feels pretty messy. Need to come up with a way to handle this. Should the action object
+            //TODO - know about what the building does? What if I export the 'buildingLibrary', and I can use that anywhere.
+            //TODO - this would allow me to define what the building does once, and use it many places.
+            let modifier = Object.assign({}, state);
+            modifier.grubs.modifier += 1;
+            return Object.assign(statModifier(state, action), modifier);
         case "GENERATOR_DIGEST":
             return statModifier(state, action);
 

@@ -7,8 +7,12 @@ class Stats extends Component {
     render() {
         const stats = Object.keys(this.props.stats).map((stat) => {
             if(stat === 'statLibrary') return;
+
+            //TODO - I dunno... I'm tired.
+            let modifier = this.props.stats[stat].modifier > 0 ? '(+' + this.props.stats[stat].modifier + '/s)' : '';
+            modifier = this.props.stats[stat].modifier < 0 ? '(-' + this.props.stats[stat].modifier + '/s)' : modifier;
             return (
-                <li key={stat}>{this.props.stats[stat].name}: {this.props.stats[stat].value}</li>
+                <li key={stat}>{this.props.stats[stat].name}: {this.props.stats[stat].value} {modifier}</li>
             );
         });
 
