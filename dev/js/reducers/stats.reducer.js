@@ -1,6 +1,12 @@
 function defaultState() {
     return {
-        grubs: 0
+        statLibrary: {
+            grubs: {
+                name: 'Grubs',
+                value: 0,
+                modifier: 0
+            }
+        }
     }
 }
 
@@ -13,16 +19,16 @@ const statModifier = (state, action) => {
             modifier[key] = state[key];
 
             if(!modifier[key])
-                modifier[key] = 0;
-
-            modifier[key] += action.payload.gain.stats[key];
+                modifier[key] = state.statLibrary[key];
+            modifier[key].value += action.payload.gain.stats[key];
         }
     }
 
     if(action.payload.cost && action.payload.cost.stats) {
         //The assumption here is that this action only fired when there was enough of the stats to cover the cost
         for(let key in action.payload.cost.stats) {
-            modifier[key] = state[key] - action.payload.cost.stats[key];
+            modifier[key] = state[key];
+            modifier[key].value -= action.payload.cost.stats[key];
         }
     }
 

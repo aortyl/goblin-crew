@@ -15,7 +15,7 @@ class Actions extends Component {
             if(action.requires) {
                 if(action.requires.stats) {
                     for(let requiresKey in action.requires.stats) {
-                        requiredMet &= this.props.stats[requiresKey] >= action.requires.stats[requiresKey];
+                        requiredMet &= this.props.stats[requiresKey] && this.props.stats[requiresKey].value >= action.requires.stats[requiresKey];
                     }
                 }
                 if(action.requires.buildings) {
@@ -29,7 +29,7 @@ class Actions extends Component {
             if(action.payload.cost) {
                 if(action.payload.cost.stats) {
                     for(let disabledKey in action.payload.cost.stats) {
-                        disabled |= this.props.stats[disabledKey] < action.payload.cost.stats[disabledKey];
+                        disabled |= !this.props.stats[disabledKey] || this.props.stats[disabledKey].value < action.payload.cost.stats[disabledKey];
                     }
                 }
                 if(action.payload.cost.buildings) {
