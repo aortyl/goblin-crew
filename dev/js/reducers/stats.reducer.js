@@ -5,6 +5,26 @@ function defaultState() {
                 name: 'Grubs',
                 value: 0,
                 modifier: 0
+            },
+            rocks: {
+                name: 'Rocks',
+                value: 0,
+                modifier: 0
+            },
+            sharpRocks: {
+                name: 'Sharp Rocks',
+                value: 0,
+                modifier: 0
+            },
+            sticks: {
+                name: 'Sticks',
+                value: 0,
+                modifier: 0
+            },
+            stabbySticks: {
+                name: 'Stabby Sticks',
+                value: 0,
+                modifier: 0
             }
         }
     }
@@ -40,6 +60,8 @@ export default function (state = defaultState(), action) {
         case "GRAB_GRUB":
         case "GRAB_ROCK":
         case "SHARPEN_ROCK":
+        case "GRAB_STICK":
+        case "STABBY_STICK":
             return statModifier(state, action);
         case "BUILD_GRUB_GRABBER":
             //TODO - This feels pretty messy. Need to come up with a way to handle this. Should the action object

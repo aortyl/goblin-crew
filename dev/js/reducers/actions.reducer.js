@@ -60,6 +60,56 @@ function defaultState() {
                 }
             }
         },
+        GRAB_STICK: {
+            name: 'Grab Stick',
+            type: 'GRAB_STICK',
+            show: false,
+            requires: {
+                stats: {
+                    grubs: 10
+                },
+                buildings: {
+                    grubGrabber: 4
+                }
+            },
+            payload: {
+                gain: {
+                    stats: {
+                        sticks: 1
+                    }
+                },
+                cost: {
+                    stats: {
+                        grubs: 10
+                    }
+                }
+            }
+        },
+        STABBY_STICK: {
+            name: 'Make Stabby Stick',
+            type: 'STABBY_STICK',
+            show: false,
+            requires: {
+                stats: {
+                    sticks: 10,
+                    sharpRocks: 2
+                }
+            },
+            payload: {
+                gain: {
+                    stats: {
+                        stabbySticks: 1
+                    }
+                },
+                cost: {
+                    stats: {
+                        grubs: 10,
+                        sticks: 5,
+                        sharpRocks: 2
+                    }
+                }
+            }
+        },
         BUILD_GRUB_GRABBER: {
             name: 'Build Grub Grabber',
             type: 'BUILD_GRUB_GRABBER',
