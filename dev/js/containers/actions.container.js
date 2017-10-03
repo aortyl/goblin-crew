@@ -7,8 +7,10 @@ class Actions extends Component {
 
     render() {
 
-        const actionButtons = Object.keys(this.props.actions).map((key, index) => {
-            let action = this.props.actions[key];
+        /*
+         * This function translates an action into a button. It also controls if the button should be displayed, or disabled.
+         */
+        const actionFunction = (action, index) => {
             let requiredMet = !!action.requires;
             let disabled = false;
 
@@ -42,7 +44,7 @@ class Actions extends Component {
 
             if(action.show || requiredMet) {
                 return (
-                    <button key={this.props.actions[key].type}
+                    <button key={action.type}
                             className="gc-button"
                             disabled={disabled}
                             onClick={() => this.props.genericAction(action.type, action.payload)}>
@@ -50,12 +52,41 @@ class Actions extends Component {
                     </button>
                 );
             }
-        });
+        }
+
+        // Build our list of buttons
+        const grabButtons = Object.values(this.props.actions.grab).map(actionFunction);
+        const makeButtons = Object.values(this.props.actions.make).map(actionFunction);
+        const buildButtons = Object.values(this.props.actions.build).map(actionFunction);
+        const triggerButtons = Object.values(this.props.actions.trigger).map(actionFunction);
+
+        // Build the sections for the buttons. This is its own logic so that we can hide the header text if no buttons exist
+        function ButtonSection(props) {
+          const headerText = props.text;
+          const buttons = props.buttons;
+
+          //We want to know if at least one button in this group is visible
+          const anyVisible = buttons.reduce( (visible, button) => {return visible || !!button;}, false);
+
+            if (buttons.length && anyVisible) {
+              return (
+                <div>
+                  <h3>{headerText}</h3>
+                    {buttons}
+                </div>
+              );
+            }
+
+            return (<div></div>);
+        }
 
         return (
-            <div className="gc-actions">
-                {actionButtons}
-            </div>
+          <div className="gc-actions">
+            <ButtonSection buttons={grabButtons} text={'Stuff lying around on the dirty ground'} />
+            <ButtonSection buttons={makeButtons} text={'Me no lazy no more'} />
+            <ButtonSection buttons={buildButtons} text={'What dis contraption?'} />
+            <ButtonSection buttons={triggerButtons} text={'Gobbos, TO ACTION!'} />
+          </div>
         );
     }
 }

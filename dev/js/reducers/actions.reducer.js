@@ -1,8 +1,10 @@
 function defaultState() {
     return {
+      grab: {
         GRAB_GRUB: {
             name: 'Grab Grub',
             type: 'GRAB_GRUB',
+            category: 'grab',
             show: true,
             payload: {
                 gain: {
@@ -15,6 +17,7 @@ function defaultState() {
         GRAB_ROCK: {
             name: 'Grab Rock',
             type: 'GRAB_ROCK',
+            category: 'grab',
             show: false,
             requires: {
                 stats: {
@@ -37,32 +40,10 @@ function defaultState() {
                 }
             }
         },
-        SHARPEN_ROCK: {
-            name: 'Sharpen Rock',
-            type: 'SHARPEN_ROCK',
-            show: false,
-            requires: {
-                stats: {
-                    rocks: 10
-                }
-            },
-            payload: {
-                gain: {
-                    stats: {
-                        sharpRocks: 1
-                    }
-                },
-                cost: {
-                    stats: {
-                        grubs: 10,
-                        rocks: 2
-                    }
-                }
-            }
-        },
         GRAB_STICK: {
             name: 'Grab Stick',
             type: 'GRAB_STICK',
+            category: 'grab',
             show: false,
             requires: {
                 stats: {
@@ -85,9 +66,36 @@ function defaultState() {
                 }
             }
         },
+      },
+      make: {
+        SHARPEN_ROCK: {
+            name: 'Sharpen Rock',
+            type: 'SHARPEN_ROCK',
+            category: 'make',
+            show: false,
+            requires: {
+                stats: {
+                    rocks: 10
+                }
+            },
+            payload: {
+                gain: {
+                    stats: {
+                        sharpRocks: 1
+                    }
+                },
+                cost: {
+                    stats: {
+                        grubs: 10,
+                        rocks: 2
+                    }
+                }
+            }
+        },
         STABBY_STICK: {
             name: 'Make Stabby Stick',
             type: 'STABBY_STICK',
+            category: 'make',
             show: false,
             requires: {
                 stats: {
@@ -110,9 +118,12 @@ function defaultState() {
                 }
             }
         },
+      },
+      build: {
         BUILD_GRUB_GRABBER: {
             name: 'Build Grub Grabber',
             type: 'BUILD_GRUB_GRABBER',
+            category: 'build',
             show: false,
             requires: {
                 stats: {
@@ -132,13 +143,25 @@ function defaultState() {
                 }
             }
         },
+      },
+      trigger: {
+
+      }
     }
 }
 
-const setStateTrue = (state, key) => {
-    let modifier = {};
-    modifier[key] = Object.assign({}, state[key], {show: true});
-    return Object.assign({}, state, modifier);
+const setStateTrue = (state, type) => {
+    let newState = Object.assign({}, state)
+
+    //TODO - consider using a for() loop to allow for breaking out.
+    //TODO - Optionally - we can consider including the category in the action payload, which would render this loop pointless.
+    Object.keys(newState).forEach((category) => {
+      if(newState[category][type]) {
+        newState[category][type].show = true;
+      }
+    })
+
+    return newState;
 };
 
 export default function (state = defaultState(), action) {
