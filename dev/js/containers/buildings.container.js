@@ -42,6 +42,7 @@ class Buildings extends Component {
            );
         });
 
+        //TODO - Only display the building section if there are buildings to display
         return (
             <div>
                 <h4>Buildings:</h4>

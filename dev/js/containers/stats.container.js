@@ -16,6 +16,7 @@ class Stats extends Component {
             );
         });
 
+        //TODO - Only display the stats section if there are stats to display
         return (
             <div>
                 <h4>Stats:</h4>

@@ -11,6 +11,7 @@ class Events extends Component {
            );
         });
 
+        //TODO - Only display the events section if there are events to display
         return (
             <div>
                 <h4>Active Events:</h4>
