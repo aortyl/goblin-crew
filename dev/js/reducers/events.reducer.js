@@ -50,7 +50,7 @@ function defaultState() {
                                 }
                             },
                             '15': {
-                                message: "You're preparation is halfway done. Raiding in 15!",
+                                message: "Prep is halfway done. Raiding in 15!",
                                 options: [
                                     {
                                         text: "Steel your resolve.",

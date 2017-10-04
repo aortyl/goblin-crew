@@ -145,7 +145,29 @@ function defaultState() {
         },
       },
       trigger: {
-
+        RAID_GOBLIN_CAMP: {
+          name: 'Raid Nearby Goblin Camp',
+          type: 'RAID_GOBLIN_CAMP',
+          category: 'trigger',
+          show: false,
+          requires: {
+            //TODO - this is another case for being able to export the libraries, instead of having them part of the state.
+            //TODO - it feels like the requires stuff should be coming from the event obj, not duplicated here.
+            stats: {
+              stabbySticks: 3,
+              grubs: 10
+            }
+          },
+          payload: {
+            events: [
+              {
+                type: 'action',
+                category: 'goblinRaids',
+                event: 'ARG1'
+              }
+            ]
+          }
+        }
       }
     }
 }
