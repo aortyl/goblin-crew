@@ -16,7 +16,7 @@ function GoblinCrewName(){
     const nouns = ['stabbers', 'gobbos', 'stumps', 'rabbits', 'skulkers', 'elbows', 'tooths'];
 
     let name = getRandom(adjectives) + ' ' + getRandom(nouns);
-    return toTitleCase(name);
+    return toTitleCase(name.toLowerCase());
 }
 
 function toTitleCase(str)
