@@ -11,17 +11,22 @@
   Random Human Name s
   */
 
-function GoblinCrewName(){
+function goblinCrewName() {
     const adjectives = ['green', 'crooked', 'foul', 'icky', 'contemptuous', 'craggy', 'splintered', 'plump', 'slinky'];
     const nouns = ['stabbers', 'gobbos', 'stumps', 'rabbits', 'skulkers', 'elbows', 'tooths'];
 
-    let name = getRandom(adjectives) + ' ' + getRandom(nouns);
-    return toTitleCase(name.toLowerCase());
+    return toTitleCase(getRandom(adjectives) + ' ' + getRandom(nouns));
 }
 
-function toTitleCase(str)
-{
-    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+function humanVillageName() {
+    const partOne = ['sunny', 'wooded', 'boar', 'deer', 'gold', 'high', 'helpless', 'hidden', 'bright'];
+    const partTwo = [' valley', 'dale', ' dale', 'ton', ' village', ' acres', 'ford' ];
+
+    return toTitleCase(getRandom(partOne) + getRandom(partTwo));
+}
+
+function toTitleCase(str) {
+    return str.toLowerCase().replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}).trim();
 }
 
 function getRandom(array) {
