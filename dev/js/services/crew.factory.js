@@ -25,6 +25,22 @@ function humanVillageName() {
     return toTitleCase(getRandom(partOne) + getRandom(partTwo));
 }
 
+function goblinName() {
+    const nameBit = ['gar', 'gob', 'mug', 'mud', 'tic', 'mar', 'bug', 'oog',
+                     'split', 'splat', 'bb', 'gn', 'gug', 'bar', 'tar', 'bleh',
+                     'stink', 'stank', 'zig', 'zug', 'zag'];
+
+    const nameBitCount = 1 + Math.floor(Math.random() * 3);
+
+    let name = "";
+
+    for (let i = 0; i < nameBitCount; i++) {
+        name += getRandom(nameBit);
+    }
+
+    return toTitleCase(name);
+}
+
 function toTitleCase(str) {
     return str.toLowerCase().replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}).trim();
 }
